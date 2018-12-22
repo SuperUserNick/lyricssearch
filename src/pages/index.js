@@ -1,7 +1,13 @@
 import React from "react"
+import Home from "../components/home"
+
+
+
 
 const index = () => {
-    return ( <div style={{ color: `purple`, fontSize: `72px` }}>Hello Gatsby!</div>)
+    return ( <div style={{ color: `purple`}}>
+            <Home />
+            </div>)
 }
 
 export default index
