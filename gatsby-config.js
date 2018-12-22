@@ -14,6 +14,12 @@ module.exports = {
             },
           ],
         },
-      }
+      },
+      {
+        resolve: 'gatsby-plugin-express',
+        options: {
+          output: 'config/gatsby-express.json',
+        }
+      },
     ]
   }
