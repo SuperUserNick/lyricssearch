@@ -5,7 +5,7 @@ module.exports = {
         options: {
           fonts: [
             {
-              family: `Oswald`,
+              family: `Ubuntu`,
               subsets: [`latin`],
             },
             {

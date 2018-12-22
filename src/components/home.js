@@ -51,8 +51,9 @@ class Home extends Component {
     
 
     render(){
-        const headerStyle = {marginTop: '150px'}
-        const inputStyle = {marginTop: '160px'}
+        const headerStyle = {marginTop: '200px'}
+        const inputStyle = {marginTop: '50px'}
+        const button = {marginTop: '10px'}
     return (
         <div className="columns" >
             <div className="column is-three-fifths is-offset-one-fifth" style={headerStyle}>
@@ -61,19 +62,20 @@ class Home extends Component {
                 <form onSubmit={this.handleSubmit}>
                 {!this.state.artist && <div>
                         <input type="text" className="input" value={this.state.inputArtist} onChange={this.handleChangeArtist} placeholder="First enter an artist" />
-                        <button className="button is-light" onClick={() => this.addArtist()}>Next</button>
+                        <button className="button is-light " style={button} onClick={() => this.addArtist()}>Next</button>
                 </div>}
                 
                     {
                         this.state.artist &&
                         <div> 
                         <input type="text" className="input" value={this.state.inputSong} onChange={this.handleChangeSong} placeholder="Next enter a song" />
-                        <button className="button is-light" type="submit" onClick={() => this.addSong()}>Submit</button>
+                        <button className="button is-light spacing" type="submit" style={button} onClick={() => this.addSong()}>Submit</button>
                         </div>
                     }
                     </form>
                 </div>
-                {this.state.lyrics && <Lyrics lyrics={this.state.lyrics}/>}
+                <div className="spacing"></div>
+                {this.state.lyrics && <Lyrics artist={this.state.artist} song={this.state.song} lyrics={this.state.lyrics}/>}
             </div>
         </div>
     )}
