@@ -9,7 +9,7 @@ import Navbar from '../components/Navbar'
 const index = () => {
     return ( <div style={{ color: `purple`, fontFamily: 'Ubuntu', fontSize: '20px'}}>
             <Navbar />
-            <Home />
+            <Home/>
             <Footer />
             </div>)
 }

@@ -16,6 +16,7 @@ class Home extends Component {
             inputSong: "",
             lyrics: "",
         }
+        this.baseState = this.state // this is a solution to resetting all values to initial state
         this.handleChangeArtist = this.handleChangeArtist.bind(this)
         this.handleChangeSong = this.handleChangeSong.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -40,7 +41,9 @@ class Home extends Component {
     getLyrics(lyrics){
         this.setState({lyrics: lyrics})
     }
-
+    reset() {
+        this.setState(this.baseState)
+    }
 
     handleSubmit(event) {
         event.preventDefault()
@@ -58,7 +61,7 @@ class Home extends Component {
         const button = {marginTop: '10px'}
     return (
         <div className="columns" >
-            <div className="column is-three-fifths is-offset-one-fifth" style={headerStyle}>
+            <div className="column box is-three-fifths is-offset-one-fifth" style={headerStyle}>
                 <h1>Please enter an artist and the song of your choice for the lyrics!</h1>
                 <div style={inputStyle}>
                 <form onSubmit={this.handleSubmit}>
@@ -71,7 +74,8 @@ class Home extends Component {
                         this.state.artist &&
                         <div> 
                         <input type="text" className="input" value={this.state.inputSong} onChange={this.handleChangeSong} placeholder="Next enter a song" />
-                        <button className="button is-light spacing" type="submit" style={button} onClick={() => this.addSong()}>Submit</button>
+                        {!this.state.lyrics ? <button className="button is-light spacing" type="submit" style={button} onClick={() => this.addSong()}>Submit</button> :
+                        <button className="button is-light" style={button} onClick={()=>this.reset()}>Search Another</button>}
                         </div>
                     }
                     </form>
