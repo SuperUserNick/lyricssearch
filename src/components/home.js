@@ -58,7 +58,9 @@ class Home extends Component {
     render(){
         const headerStyle = {marginTop: '200px'}
         const inputStyle = {marginTop: '50px'}
-        const button = {marginTop: '10px'}
+        const nextButton = {marginTop: '10px', backgroundColor: '#B9F6CA'}
+        const submitButton = {marginTop: '10px', backgroundColor: '#69F0AE'}
+        const resetButton = {marginTop: '10px', backgroundColor: '##00E676'}
     return (
         <div className="columns" >
             <div className="column box is-three-fifths is-offset-one-fifth" style={headerStyle}>
@@ -67,15 +69,15 @@ class Home extends Component {
                 <form onSubmit={this.handleSubmit}>
                 {!this.state.artist && <div>
                         <input type="text" className="input" value={this.state.inputArtist} onChange={this.handleChangeArtist} placeholder="First enter an artist" />
-                        <button className="button is-light " style={button} onClick={() => this.addArtist()}>Next</button>
+                        <button className="button is-light " style={nextButton} onClick={() => this.addArtist()}>Next</button>
                 </div>}
                 
                     {
                         this.state.artist &&
                         <div> 
                         <input type="text" className="input" value={this.state.inputSong} onChange={this.handleChangeSong} placeholder="Next enter a song" />
-                        {!this.state.lyrics ? <button className="button is-light spacing" type="submit" style={button} onClick={() => this.addSong()}>Submit</button> :
-                        <button className="button is-light" style={button} onClick={()=>this.reset()}>Search Another</button>}
+                        {!this.state.lyrics ? <button className="button is-light spacing" type="submit" style={submitButton} onClick={() => this.addSong()}>Submit</button> :
+                        <button className="button is-light" style={resetButton} onClick={()=>this.reset()}>Search Another</button>}
                         </div>
                     }
                     </form>
