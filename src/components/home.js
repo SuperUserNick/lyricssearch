@@ -15,6 +15,7 @@ class Home extends Component {
             song: "",
             inputSong: "",
             lyrics: "",
+            error: false,
         }
         this.baseState = this.state // this is a solution to resetting all values to initial state
         this.handleChangeArtist = this.handleChangeArtist.bind(this)
@@ -35,6 +36,7 @@ class Home extends Component {
     }
 
     addSong(){
+        this.state.error ? this.setState({error: false}) : this.setState({error: false})
         this.setState({song: this.state.inputSong})
     }
 
@@ -43,6 +45,10 @@ class Home extends Component {
     }
     reset() {
         this.setState(this.baseState)
+    }
+    error(){
+        this.reset()
+        this.setState({error: true})
     }
 
     handleSubmit(event) {
@@ -84,6 +90,7 @@ class Home extends Component {
                 </div>
                 <div className="spacing"></div>
                 {this.state.lyrics && <Lyrics artist={this.state.artist} song={this.state.song} lyrics={this.state.lyrics}/>}
+                {this.state.error && <h1 style={{marginTop: '10px'}}>The song you are searching for could not be found - please check spelling or try searching another song</h1>}
             </div>
         </div>
     )}
