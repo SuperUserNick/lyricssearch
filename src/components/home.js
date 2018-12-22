@@ -14,7 +14,7 @@ class Home extends Component {
             artist: "",
             song: "",
             inputSong: "",
-            lyrics: ""
+            lyrics: "",
         }
         this.handleChangeArtist = this.handleChangeArtist.bind(this)
         this.handleChangeSong = this.handleChangeSong.bind(this)
@@ -41,12 +41,14 @@ class Home extends Component {
         this.setState({lyrics: lyrics})
     }
 
+
     handleSubmit(event) {
         event.preventDefault()
         const artist = this.state.artist
         const song = this.state.song
         Axios.get(`https://api.lyrics.ovh/v1/${artist}/${song}`)
         .then(res => this.getLyrics(res.data.lyrics))
+        .catch(() => this.error())
     }
     
 
