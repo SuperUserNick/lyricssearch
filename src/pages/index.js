@@ -5,7 +5,7 @@ import Home from "../components/home"
 
 
 const index = () => {
-    return ( <div style={{ color: `purple`}}>
+    return ( <div style={{ color: `purple`, fontFamily: 'Ubuntu'}}>
             <Home />
             </div>)
 }
